@@ -11,6 +11,7 @@ networks:
 
 services:
   prometheus:
+    container_name: prometheus-monitoring
     image: prom/prometheus:v2.25.2
     restart: always
     volumes:
@@ -31,6 +32,7 @@ services:
       - back-tier
 
   grafana:
+    container_name: grafana-monitoring
     image: grafana/grafana
     restart: always
     volumes:
@@ -47,6 +49,7 @@ services:
       - front-tier
 
   ping:
+    container_name: ping-monitoring
     tty: true
     stdin_open: true
     expose:
@@ -63,6 +66,7 @@ services:
       - back-tier
 
   speedtest:
+    container_name: speedtest-monitoring
     expose:
       - 9798
     ports:
@@ -73,6 +77,7 @@ services:
       - back-tier
 
   nodeexp:
+    container_name: nodeexp-monitoring
     privileged: true
     image: prom/node-exporter
     volumes:
